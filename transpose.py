@@ -27,3 +27,6 @@ stage1 = tf.flatMap(keyedVectors)
 stage1.saveAsTextFile("stage1")
 stage2 = strage1.reduceByKey(vectorAddition)
 stage2.saveAsTextFile("stage2")
+
+stage3 = stage2.map( lambda x : ( x[0], [x[1][i] for i in sorted(x[1].keys()]))
+stage3.saveAsTextFile("stage3")
